@@ -7,6 +7,9 @@ namespace Chains.Test
     [TestClass]
     public class HelperTests
     {
+        private const string DidNotReturnSameReference = "Did not return the same reference.";
+        private const string DidNotReturnEqualValue = "Did not return equal value.";
+
         [TestMethod]
         public void EnsureNotNull_Should_ReturnSameObjectIfNotNull()
         {
@@ -14,7 +17,7 @@ namespace Chains.Test
 
             var actual = expected.EnsureNotNull(nameof(expected));
 
-            Assert.AreSame(expected, actual, "Did not return the same reference.");
+            Assert.AreSame(expected, actual, DidNotReturnSameReference);
         }
 
         [TestMethod]
@@ -35,7 +38,7 @@ namespace Chains.Test
 
             var actual = expected.EnsureBetweenInclusive(min, max, nameof(expected));
 
-            Assert.AreEqual(expected, actual, "Did not return equal value.");
+            Assert.AreEqual(expected, actual, DidNotReturnEqualValue);
         }
 
         [TestMethod]
@@ -47,7 +50,7 @@ namespace Chains.Test
 
             var actual = expected.EnsureBetweenInclusive(min, max, nameof(expected));
 
-            Assert.AreEqual(expected, actual, "Did not return equal value.");
+            Assert.AreEqual(expected, actual, DidNotReturnEqualValue);
         }
 
         [TestMethod]
@@ -59,7 +62,7 @@ namespace Chains.Test
 
             var actual = expected.EnsureBetweenInclusive(min, max, nameof(expected));
 
-            Assert.AreEqual(expected, actual, "Did not return equal value.");
+            Assert.AreEqual(expected, actual, DidNotReturnEqualValue);
         }
 
         [TestMethod]
