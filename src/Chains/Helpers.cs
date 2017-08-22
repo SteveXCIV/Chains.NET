@@ -4,9 +4,8 @@ namespace Chains
 {
     public static class Helpers
     {
-        private static readonly string ArgumentTooSmallMessage = "Given argument was less than the specified minimum of {0}.";
-
-        private static readonly string ArgumentTooLargeMessage = "Given argument was greater than the specified maximum of {0}.";
+        private const string ArgumentTooSmallMessage = "Given argument was less than the specified minimum of {0}.";
+        private const string ArgumentTooLargeMessage = "Given argument was greater than the specified maximum of {0}.";
 
         public static TSource EnsureNotNull<TSource>(this TSource source, string name) where TSource: class
         {
