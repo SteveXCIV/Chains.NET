@@ -15,7 +15,7 @@ namespace Chains
             return source;
         }
 
-        public static TSource EnsureBetweenInclusive<TSource, TCompare>(this TSource source, string name, TCompare min, TCompare max)
+        public static TSource EnsureBetweenInclusive<TSource, TCompare>(this TSource source, TCompare min, TCompare max, string name)
             where TSource : IComparable<TCompare>
         {
             if (source.CompareTo(min) < 0)
