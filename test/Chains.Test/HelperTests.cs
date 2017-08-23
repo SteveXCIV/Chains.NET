@@ -86,5 +86,24 @@ namespace Chains.Test
 
             var actual = expected.EnsureBetweenInclusive(min, max, nameof(expected));
         }
+
+        [TestMethod]
+        public void Ensure_Should_ReturnSameInstanceIfRequirmentPassed()
+        {
+            var expected = "Hello, world.";
+
+            var actual = expected.Ensure(s => true, nameof(expected), "Did not pass expectation.");
+
+            Assert.AreSame(expected, actual, DidNotReturnEqualValue);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Ensure_Should_ThrowIfRequirementFailed()
+        {
+            var expected = "Hello, world!";
+
+            var actual = expected.Ensure(s => false, nameof(expected), "Passed expectation.");
+        }
     }
 }

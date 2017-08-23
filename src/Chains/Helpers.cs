@@ -23,5 +23,12 @@ namespace Chains
                 throw new ArgumentOutOfRangeException(name, source, string.Format(ArgumentTooLargeMessage, max));
             return source;
         }
+
+        public static TSource Ensure<TSource>(this TSource source, Func<TSource, bool> requirement, string name, string message)
+        {
+            if (!requirement(source))
+                throw new ArgumentException(name, message);
+            return source;
+        }
     }
 }
