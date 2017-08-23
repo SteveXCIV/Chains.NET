@@ -2,7 +2,7 @@ using System;
 
 namespace Chains
 {
-    public static class Helpers
+    public static class RequirementHelper
     {
         private const string ArgumentTooSmallMessage = "Given argument was less than the specified minimum of {0}.";
         private const string ArgumentTooLargeMessage = "Given argument was greater than the specified maximum of {0}.";

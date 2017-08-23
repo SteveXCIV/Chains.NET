@@ -5,7 +5,7 @@ using Chains;
 namespace Chains.Test
 {
     [TestClass]
-    public class HelperTests
+    public class RequirementHelperTests
     {
         private const string DidNotReturnSameReference = "Did not return the same reference.";
         private const string DidNotReturnEqualValue = "Did not return equal value.";
