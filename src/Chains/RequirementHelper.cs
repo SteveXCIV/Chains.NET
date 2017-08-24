@@ -2,19 +2,19 @@ using System;
 
 namespace Chains
 {
-    public static class RequirementHelper
+    internal static class RequirementHelper
     {
         private const string ArgumentTooSmallMessage = "Given argument was less than the specified minimum of {0}.";
         private const string ArgumentTooLargeMessage = "Given argument was greater than the specified maximum of {0}.";
 
-        public static TSource EnsureNotNull<TSource>(this TSource source, string name) where TSource: class
+        internal static TSource EnsureNotNull<TSource>(this TSource source, string name) where TSource: class
         {
             if (source == null)
                 throw new ArgumentNullException(name);
             return source;
         }
 
-        public static TSource EnsureBetweenInclusive<TSource, TCompare>(this TSource source, TCompare min, TCompare max, string name)
+        internal static TSource EnsureBetweenInclusive<TSource, TCompare>(this TSource source, TCompare min, TCompare max, string name)
             where TSource : IComparable<TCompare>
         {
             if (source.CompareTo(min) < 0)
@@ -24,7 +24,7 @@ namespace Chains
             return source;
         }
 
-        public static TSource Ensure<TSource>(this TSource source, Func<TSource, bool> requirement, string name, string message)
+        internal static TSource Ensure<TSource>(this TSource source, Func<TSource, bool> requirement, string name, string message)
         {
             if (!requirement(source))
                 throw new ArgumentException(name, message);
