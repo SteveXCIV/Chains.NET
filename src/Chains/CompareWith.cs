@@ -33,7 +33,25 @@ namespace Chains
             source.EnsureNotNull(nameof(source));
             other.EnsureNotNull(nameof(other));
 
-            throw new NotImplementedException();
+            var leftEnumerator = source.GetEnumerator();
+            var rightEnumerator = other.GetEnumerator();
+            var leftMoved = false;
+            var rightMoved = false;
+
+            while (true)
+            {
+                leftMoved = leftEnumerator.MoveNext();
+                rightMoved = rightEnumerator.MoveNext();
+
+                if (!leftMoved && !rightMoved) return 0;
+                else if (!leftMoved && rightMoved) return -1;
+                else if (leftMoved && !rightMoved) return 1;
+
+                var comparison = leftEnumerator.Current
+                    .CompareTo(rightEnumerator.Current);
+
+                if (comparison != 0) return comparison;
+            }
         }
     }
 }
