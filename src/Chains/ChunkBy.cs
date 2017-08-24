@@ -32,7 +32,21 @@ namespace Chains
             source.EnsureNotNull(nameof(source));
             size.Ensure(x => x > 0, nameof(size), "Must be a positive integer.");
 
-            throw new NotImplementedException();
+            if (!source.Any())
+            {
+                yield return Enumerable.Empty<TSource>();
+                yield break;
+            }
+
+            var chunk = source.Take(size);
+            var rest = source.Skip(size);
+
+            while (chunk.Any())
+            {
+                yield return chunk;
+                chunk = rest.Take(size);
+                rest = rest.Skip(size);
+            }
         }
     }
 }
