@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chains
 {
@@ -91,7 +92,10 @@ namespace Chains
         {
             selector.EnsureNotNull(nameof(selector));
 
-            throw new NotImplementedException();
+            var source2 = source.Select(selector);
+            var other2 = other.Select(selector);
+
+            return source2.CompareWith(other2);
         }
     }
 }
