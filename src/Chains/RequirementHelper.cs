@@ -7,7 +7,7 @@ namespace Chains
         private const string ArgumentTooSmallMessage = "Given argument was less than the specified minimum of {0}.";
         private const string ArgumentTooLargeMessage = "Given argument was greater than the specified maximum of {0}.";
 
-        internal static TSource EnsureNotNull<TSource>(this TSource source, string name) where TSource: class
+        internal static TSource EnsureNotNull<TSource>(this TSource source, string name)
         {
             if (source == null)
                 throw new ArgumentNullException(name);
