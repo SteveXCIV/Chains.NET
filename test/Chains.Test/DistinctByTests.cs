@@ -36,7 +36,7 @@ namespace Chains.Test
             foreach (var item in actual)
                 Assert.IsTrue(
                     expected.Contains(item),
-                    $"Expected {actual} in sequence.");
+                    $"Expected {item} in sequence.");
         }
     }
 }
