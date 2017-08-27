@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Chains
@@ -24,7 +25,11 @@ namespace Chains
         {
             source.EnsureNotNull(nameof(source));
 
-            throw new NotImplementedException();
+            if (!source.Any()) yield break;
+
+            while (true)
+                foreach (var item in source)
+                    yield return item;
         }
     }
 }
