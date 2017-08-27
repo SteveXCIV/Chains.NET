@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chains
 {
@@ -28,7 +29,19 @@ namespace Chains
             this IEnumerable<TSource> source,
             int size)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            size.EnsureGreaterThan(0, nameof(size));
+
+            if (!source.Any()) yield break;
+
+            var seq = source;
+            var iter = seq.Skip(size - 1).GetEnumerator();
+            while (iter.MoveNext())
+            {
+                yield return seq.Take(size);
+                seq = seq.Skip(1);
+            }
+            yield break;
         }
     }
 }

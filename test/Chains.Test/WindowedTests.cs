@@ -62,9 +62,9 @@ namespace Chains.Test
 
             var actual = sequence.Windowed(size);
 
-            Assert.AreEqual(expected.Count, actual.Count(), "Mismatched counts.");
+            Assert.AreEqual(expected.Count, actual.Count(), "Mismatched counts at top level.");
             foreach (var window in actual)
-                Assert.AreEqual(size, window.Count(), "Mismatched counts.");
+                Assert.AreEqual(size, window.Count(), "Mismatched counts at window level.");
             Assert.IsTrue(
                 expected
                     .SelectMany(x => x)
