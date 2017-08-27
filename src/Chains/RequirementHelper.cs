@@ -24,6 +24,22 @@ namespace Chains
             return source;
         }
 
+        internal static TSource EnsureGreaterThan<TSource, TCompare>(this TSource source, TCompare other, string name)
+            where TSource : IComparable<TCompare>
+        {
+            if (source.CompareTo(other) <= 0)
+                throw new ArgumentOutOfRangeException(name, source, string.Format(ArgumentTooSmallMessage, other));
+            return source;
+        }
+
+        internal static TSource EnsureLessThan<TSource, TCompare>(this TSource source, TCompare other, string name)
+            where TSource : IComparable<TCompare>
+        {
+            if (source.CompareTo(other) >= 0)
+                throw new ArgumentOutOfRangeException(name, source, string.Format(ArgumentTooLargeMessage, other));
+            return source;
+        }
+
         internal static TSource Ensure<TSource>(this TSource source, Func<TSource, bool> requirement, string name, string message)
         {
             if (!requirement(source))

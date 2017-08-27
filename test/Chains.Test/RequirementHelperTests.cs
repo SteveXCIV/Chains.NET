@@ -88,6 +88,68 @@ namespace Chains.Test
         }
 
         [TestMethod]
+        public void EnsureGreaterThan_Should_ReturnSameObjectIfGreaterThanOther()
+        {
+            var expected = "abc";
+            var other = "aaa";
+
+            var actual = expected.EnsureGreaterThan(other, nameof(expected));
+
+            Assert.AreSame(expected, actual, DidNotReturnSameReference);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void EnsureGreaterThan_Should_ThrowIfEqualToOther()
+        {
+            var expected = "abc";
+            var other = "abc";
+
+            var actual = expected.EnsureGreaterThan(other, nameof(expected));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void EnsureGreaterThan_Should_ThrowIfLesserThanOther()
+        {
+            var expected = "abc";
+            var other = "zzz";
+
+            var actual = expected.EnsureGreaterThan(other, nameof(expected));
+        }
+
+        [TestMethod]
+        public void EnsureLessThan_Should_ReturnSameObjectIfLessserThanOther()
+        {
+            var expected = "abc";
+            var other = "zzz";
+
+            var actual = expected.EnsureLessThan(other, nameof(expected));
+
+            Assert.AreSame(expected, actual, DidNotReturnSameReference);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void EnsureLessThan_Should_ThrowIfEqualToOther()
+        {
+            var expected = "abc";
+            var other = "abc";
+
+            var actual = expected.EnsureLessThan(other, nameof(expected));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void EnsureLessThan_Should_ThrowIfGreaterThanOther()
+        {
+            var expected = "abc";
+            var other = "aaa";
+
+            var actual = expected.EnsureLessThan(other, nameof(expected));
+        }
+
+        [TestMethod]
         public void Ensure_Should_ReturnSameInstanceIfRequirmentPassed()
         {
             var expected = "Hello, world.";
