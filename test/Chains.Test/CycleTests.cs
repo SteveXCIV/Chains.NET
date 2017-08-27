@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Chains;
@@ -8,6 +9,15 @@ namespace Chains.Test
     [TestClass]
     public class CycleTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Cycle_Should_ThrowIfSourceIsNull()
+        {
+            var sequence = (IEnumerable<object>)null;
+
+            var actual = sequence.Cycle().ToList();
+        }
+
         [TestMethod]
         public void Cycle_Should_YieldTheElementsOfAnEnumerableInfinitely()
         {
