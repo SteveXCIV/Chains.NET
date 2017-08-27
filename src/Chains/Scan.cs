@@ -43,7 +43,9 @@ namespace Chains
             Func<TState, TSource, TState> accumulator,
             Func<TState, TResult> transformer)
         {
-            throw new NotImplementedException();
+            return source
+                .Scan(seed, accumulator)
+                .Select(transformer);
         }
 
         /// <summary>
@@ -74,7 +76,17 @@ namespace Chains
             TState seed,
             Func<TState, TSource, TState> accumulator)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            accumulator.EnsureNotNull(nameof(accumulator));
+
+            yield return seed;
+
+            var last = seed;
+            foreach (var item in source)
+            {
+                last = accumulator(last, item);
+                yield return last;
+            }
         }
 
         /// <summary>
@@ -100,7 +112,14 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, TSource, TSource> accumulator)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            if (!source.Any()) return Enumerable.Empty<TSource>();
+
+            var first = source.First();
+            var rest = source.Skip(1);
+
+            return rest.Scan(first, accumulator);
         }
     }
 }
