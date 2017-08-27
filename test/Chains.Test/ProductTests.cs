@@ -41,6 +41,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfInts_Should_ThrowOnOverflow()
         {
             var ints = new[]{ int.MaxValue, 10 };
@@ -91,6 +92,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfNullableInts_Should_ThrowOnOverflow()
         {
             var ints = new int?[]{ int.MaxValue, 10 };
@@ -130,6 +132,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfLongs_Should_ThrowOnOverflow()
         {
             var longs = new[]{ long.MaxValue, 10L };
@@ -180,6 +183,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfNullableLongs_Should_ThrowOnOverflow()
         {
             var longs = new long?[]{ long.MaxValue, 10L };
@@ -365,6 +369,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfDecimals_Should_ThrowOnOverflow()
         {
             var decimals = new[]{ decimal.MaxValue, 10.0M };
@@ -415,6 +420,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfNullableDecimals_Should_ThrowOnOverflow()
         {
             var decimals = new decimal?[]{ decimal.MaxValue, 10.0M };
@@ -463,6 +469,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedInts_Should_ThrowOnOverflow()
         {
             var ints = new[]{ int.MaxValue, 10 };
@@ -522,6 +529,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedNullableInts_Should_ThrowOnOverflow()
         {
             var ints = new int?[]{ int.MaxValue, 10 };
@@ -570,6 +578,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedLongs_Should_ThrowOnOverflow()
         {
             var longs = new[]{ long.MaxValue, 10L };
@@ -629,6 +638,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedNullableLongs_Should_ThrowOnOverflow()
         {
             var longs = new long?[]{ long.MaxValue, 10L };
@@ -859,6 +869,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedDecimals_Should_ThrowOnOverflow()
         {
             var decimals = new[]{ decimal.MaxValue, 10.0M };
@@ -918,6 +929,7 @@ namespace Chains.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void ProductOfTransformedNullableDecimals_Should_ThrowOnOverflow()
         {
             var decimals = new decimal?[]{ decimal.MaxValue, 10.0M };

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chains
 {
@@ -20,7 +21,10 @@ namespace Chains
         /// </returns>
         public static int Product(this IEnumerable<int> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .Aggregate(1, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -39,7 +43,11 @@ namespace Chains
         /// </returns>
         public static int? Product(this IEnumerable<int?> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .OfType<int>()
+                .Aggregate(1, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -57,7 +65,10 @@ namespace Chains
         /// </returns>
         public static long Product(this IEnumerable<long> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .Aggregate(1L, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -76,7 +87,11 @@ namespace Chains
         /// </returns>
         public static long? Product(this IEnumerable<long?> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .OfType<long>()
+                .Aggregate(1L, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -91,7 +106,10 @@ namespace Chains
         /// </returns>
         public static float Product(this IEnumerable<float> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .Aggregate(1.0F, (x, y) => x * y);
         }
 
         /// <summary>
@@ -107,7 +125,11 @@ namespace Chains
         /// </returns>
         public static float? Product(this IEnumerable<float?> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .OfType<float>()
+                .Aggregate(1.0F, (x, y) => x * y);
         }
 
         /// <summary>
@@ -122,7 +144,10 @@ namespace Chains
         /// </returns>
         public static double Product(this IEnumerable<double> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .Aggregate(1.0, (x, y) => x * y);
         }
 
         /// <summary>
@@ -138,7 +163,11 @@ namespace Chains
         /// </returns>
         public static double? Product(this IEnumerable<double?> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .OfType<double>()
+                .Aggregate(1.0, (x, y) => x * y);
         }
 
         /// <summary>
@@ -156,7 +185,10 @@ namespace Chains
         /// </returns>
         public static decimal Product(this IEnumerable<decimal> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .Aggregate(1.0M, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -175,7 +207,11 @@ namespace Chains
         /// </returns>
         public static decimal? Product(this IEnumerable<decimal?> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            return source
+                .OfType<decimal>()
+                .Aggregate(1.0M, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -205,7 +241,12 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, int> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .Aggregate(1, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -235,7 +276,13 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, int?> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .OfType<int>()
+                .Aggregate(1, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -265,7 +312,12 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, long> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .Aggregate(1L, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -295,7 +347,13 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, long?> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .OfType<long>()
+                .Aggregate(1L, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -322,7 +380,12 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, float> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .Aggregate(1.0F, (x, y) => x * y);
         }
 
         /// <summary>
@@ -349,7 +412,13 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, float?> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .OfType<float>()
+                .Aggregate(1.0F, (x, y) => x * y);
         }
 
         /// <summary>
@@ -376,7 +445,12 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, double> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .Aggregate(1.0, (x, y) => x * y);
         }
 
         /// <summary>
@@ -403,7 +477,13 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, double?> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .OfType<double>()
+                .Aggregate(1.0, (x, y) => x * y);
         }
 
         /// <summary>
@@ -433,7 +513,12 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, decimal> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .Aggregate(1.0M, (x, y) => { checked { return x * y; } });
         }
 
         /// <summary>
@@ -464,7 +549,13 @@ namespace Chains
             this IEnumerable<TSource> source,
             Func<TSource, decimal?> selector)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            selector.EnsureNotNull(nameof(selector));
+
+            return source
+                .Select(selector)
+                .OfType<decimal>()
+                .Aggregate(1.0M, (x, y) => { checked { return x * y; } });
         }
     }
 }
