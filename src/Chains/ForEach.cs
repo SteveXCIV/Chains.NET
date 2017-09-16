@@ -24,7 +24,10 @@ namespace Chains
             this IEnumerable<TSource> source,
             Action<TSource> action)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            action.EnsureNotNull(nameof(action));
+
+            foreach (var element in source) action(element);
         }
     }
 }
