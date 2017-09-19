@@ -26,7 +26,16 @@ namespace Chains
         public static IEnumerable<TSource> ExceptLast<TSource>(
             this IEnumerable<TSource> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            // TODO: Helper
+            if (!source.Any()) throw new InvalidOperationException();
+
+            var enumerator = source.GetEnumerator();
+            var lookahead = source.Skip(1).GetEnumerator();
+            while (lookahead.MoveNext() && enumerator.MoveNext())
+            {
+                yield return enumerator.Current;
+            }
         }
     }
 }
