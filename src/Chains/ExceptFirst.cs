@@ -26,7 +26,11 @@ namespace Chains
         public static IEnumerable<TSource> ExceptFirst<TSource>(
             this IEnumerable<TSource> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+            // TODO: Replace with helper method
+            if (!source.Any()) throw new InvalidOperationException();
+
+            foreach (var item in source.Skip(1)) yield return item;
         }
     }
 }
