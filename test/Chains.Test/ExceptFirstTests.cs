@@ -45,9 +45,9 @@ namespace Chains.Test
         {
             var sequence = Enumerable.Range(1, 3);
 
-            var first = new[]{ sequence.First() };
+            var first = sequence.First();
             var exceptFirst = sequence.ExceptFirst();
-            var concat = first.Concat(exceptFirst);
+            var concat = exceptFirst.Prepend(first);
 
             Assert.IsTrue(
                 concat.SequenceEqual(sequence),
