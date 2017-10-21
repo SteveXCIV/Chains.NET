@@ -4,4 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+      <Title>Chains.NET</Title>
+      <Description>Spice up your enumerables with extra method chains.</Description>
+      <Copyright>Copyright (c) 2017 Steven Troetti</Copyright>
+      <RepositoryUrl>github.com/SteveXCIV/Chains.NET</RepositoryUrl>
+      <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+      <Copy
+          SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg"
+          DestinationFolder="$(MSBuildProjectDirectory)\..\..\artifacts" />
+  </Target>
+
 </Project>
