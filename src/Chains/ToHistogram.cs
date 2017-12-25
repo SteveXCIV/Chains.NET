@@ -22,7 +22,21 @@ namespace Chains
         public static IDictionary<TSource, int> ToHistogram<TSource>(
             this IEnumerable<TSource> source)
         {
-            throw new NotImplementedException();
+            source.EnsureNotNull(nameof(source));
+
+            var dict = new Dictionary<TSource, int>();
+
+            foreach (var element in source)
+            {
+                if (!dict.ContainsKey(element))
+                {
+                    dict[element] = 0;
+                }
+
+                dict[element]++;
+            }
+
+            return dict;
         }
     }
 }
